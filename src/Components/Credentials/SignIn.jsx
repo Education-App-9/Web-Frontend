@@ -46,7 +46,7 @@ export default function SignIn() {
       <Grid container component="main" sx={{ height: '100vh' , backgroundColor: '#f3f4f6' }}>
        
         
-        <Grid item xs={12} sm={8} md={5}  elevation={6} square>
+        <Grid item xs={12} sm={8} md={6}  elevation={6} square>
           <Box
             sx={{
               my: 8,
@@ -112,16 +112,37 @@ export default function SignIn() {
           item
           xs={false}
           sm={4}
-          md={7}
+          md={6}
         >
-            <Box sx = {{ display:'flex' ,backgroundColor : '#ffff' ,
-                         flexDirection:'column' , justifyContent:'center'  }}>
-              <Box>
-                <Typography>
-                  Hello World
+            <Box  sx={{
+              mx: 4,
+              my:1,
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              background: '#fff',
+              border:1,
+              borderColor:'#fff',
+              borderRadius:5
+            }}>
+              <Box sx={{padding:2}}>
+                <Typography variant='h4' sx={{textAlign:'center'}} >
+                  Welcome Back
+                </Typography >
+                <Typography  sx={{textAlign:'center'}}>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                  Maxime mollitia, molestiae quas vel sint commodi repudiandae 
                 </Typography>
               </Box>
-              <img height={400} width={500} src={doodle} alt='doodle'  />
+              <Box sx={{padding:2 , display: 'flex',
+              flexDirection: 'column',alignItems: 'center',}}>
+                <img 
+                  height={'1%'} 
+                    width={350} 
+                    src={doodle} 
+                    alt='doodle' 
+                 />
+              </Box>
             </Box>
         </Grid>
       </Grid>

@@ -6,6 +6,9 @@ export default function LandingPage() {
   const navigate = useNavigate()
   return (
     <Fragment> 
+        <Typography>
+          Hello World
+        </Typography>
         <Button onClick={()=> navigate('/SignIn')}>
             Log In
         </Button>
