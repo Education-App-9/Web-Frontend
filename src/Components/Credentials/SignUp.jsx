@@ -36,6 +36,8 @@ function Copyright(props) {
 
 
 export default function SignUp() {
+    const [appname,setAppname]= useState('Education App')
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -48,7 +50,7 @@ export default function SignUp() {
   const theme = useTheme()
 
   const [showPassword, setShowPassword] = useState(false);
-
+  const [showCPassword, setShowCPassword] = useState(false);
   const handleClickShowPassword = () => {
     setShowPassword(!showPassword);
   };
@@ -57,47 +59,84 @@ export default function SignUp() {
     event.preventDefault();
   };
 
+  const handleClickShowCPassword = () => {
+    setShowCPassword(!showCPassword);
+  };
 
+  const handleMouseDownCPassword = (event) => {
+    event.preventDefault();
+  };
   return (
       <Grid container component="main" sx={{ height: '100vh' , backgroundColor: '#f3f4f6' }}>
        
         
         <Grid item xs={12} sm={8} md={6}  elevation={6} square>
+            <Box sx={{
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'start',
+                mx:3,
+                my:4
+                }}>
+              <Typography 
+                sx={{
+                    fontWeight:'bolder',
+                    color:theme.palette.secondary.main
+                }}  
+                variant="h4"
+                >
+                {appname}
+              </Typography>
+            </Box>
           <Box
             sx={{
-              my: 8,
               mx: 3,
-              paddingX:'15%',
-              paddingY:'1%'
+              paddingX:'15%'
             }}
           >
             <Box sx={{display: 'flex',
               flexDirection: 'column',
               alignItems: 'start',}}>
-              <Typography sx={{fontFamily:'bold'}}  variant="h5">
-                Login
+              <Typography sx={{fontWeight:'bolder' , mb:3}}  variant="h5">
+                Register
               </Typography>
             </Box>
             <Box component="form" noValidate onSubmit={handleSubmit} 
-              sx={{ mt: 1 ,
+              sx={{ 
              display: 'flex',
              flexDirection: 'column',
              alignItems: 'center',}}>
+                <TextField
+                required
+                fullWidth
+                id="name"
+                label="Name"
+                name="name"
+                autoComplete="name"
+                defaultValue="Small"
+                margin='normall'
+                size="small"
+                sx={{
+                  backgroundColor:'#fff',
+                            }}
+                autoFocus
+              />
               <TextField
-                margin="normal"
                 required
                 fullWidth
                 id="email"
                 label="Email Address"
                 name="email"
                 autoComplete="email"
+                defaultValue="Small"
+                margin='normal'
+                size="small"
                 sx={{
                   backgroundColor:'#fff'
                 }}
                 autoFocus
               />
               <TextField
-                margin="normal"
                 required
                 fullWidth
                 name="password"
@@ -105,6 +144,9 @@ export default function SignUp() {
                 type={showPassword ? 'text' : 'password'}
                 id="password"
                 autoComplete="current-password"
+                defaultValue="Small"
+                margin='normal'
+                size="small"
                 InputProps={{
                   endAdornment: (
                     <InputAdornment position="end">
@@ -123,13 +165,42 @@ export default function SignUp() {
                   backgroundColor:'#fff'
                 }}
               />
+              <TextField
+                required
+                fullWidth
+                name="Cpassword"
+                label="Confirm Password"
+                type={showCPassword ? 'text' : 'password'}
+                id="Cpassword"
+                autoComplete="current-password"
+                defaultValue="Small"
+                margin='normal'
+                size="small"
+                InputProps={{
+                  endAdornment: (
+                    <InputAdornment position="end">
+                      <IconButton
+                        aria-label="toggle password visibility"
+                        onClick={handleClickShowCPassword}
+                        onMouseDown={handleMouseDownCPassword}
+                        edge="end"
+                      >
+                        {showCPassword ? <VisibilityOff /> : <Visibility />}
+                      </IconButton>
+                    </InputAdornment>
+                  ),
+                }}
+                sx={{
+                  backgroundColor:'#fff'
+                }}
+              />
 
               <Button
                 type="submit"
                 fullWidth
                 
                 sx={{ mt: 3, mb: 2 , 
-                    backgroundColor:'#178582' ,
+                    backgroundColor:theme.palette.secondary.main ,
                     border: '1 solid #178582' , borderRadius:2 ,
                     color : '#fff',
                     "&:hover" :{
@@ -138,16 +209,16 @@ export default function SignUp() {
 
                     } }}
               >
-                Log In
+                Register
               </Button>
               <Grid container>
                 <Grid item>
-                  <Link href="/" variant="body2">
-                    {"Don't have an account? Sign Up"}
+                  <Link href="/SignIn" variant="body2">
+                    {"Already have an account? Login"}
                   </Link>
                 </Grid>
               </Grid>
-              <Copyright sx={{ mt: 5 }} />
+              <Copyright sx={{ mt: 3 }} />
             </Box>
           </Box>
         </Grid>
@@ -169,8 +240,8 @@ export default function SignUp() {
               borderRadius:5
             }}>
               <Box sx={{padding:1.5}}>
-                <Typography variant='h4' sx={{textAlign:'center' ,fontWeight:'bold'}} >
-                  Welcome Back
+                <Typography variant='h5' sx={{textAlign:'center' ,fontWeight:'bold'}} >
+                  Create Account And Start learning
                 </Typography >
                 <Typography  sx={{textAlign:'center'}}>
                   Lorem ipsum dolor sit amet consectetur adipisicing elit. 

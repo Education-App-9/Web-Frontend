@@ -74,7 +74,7 @@ export default function SignIn() {
             <Box sx={{display: 'flex',
               flexDirection: 'column',
               alignItems: 'start',}}>
-              <Typography sx={{fontFamily:'bold'}}  variant="h5">
+              <Typography sx={{fontWeight:'bolder' ,}}  variant="h5">
                 Login
               </Typography>
             </Box>
@@ -129,7 +129,7 @@ export default function SignIn() {
                 fullWidth
                 
                 sx={{ mt: 3, mb: 2 , 
-                    backgroundColor:'#178582' ,
+                    backgroundColor:theme.palette.secondary.main ,
                     border: '1 solid #178582' , borderRadius:2 ,
                     color : '#fff',
                     "&:hover" :{
@@ -142,7 +142,7 @@ export default function SignIn() {
               </Button>
               <Grid container>
                 <Grid item>
-                  <Link href="/" variant="body2">
+                  <Link href="/SignUp" variant="body2">
                     {"Don't have an account? Sign Up"}
                   </Link>
                 </Grid>
