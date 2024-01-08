@@ -114,8 +114,12 @@ export default function SignIn() {
           sm={4}
           md={7}
         >
-            <Box sx = {{ display:'flex' ,backgroundColor : '#ffff'}}>
+            <Box sx = {{ display:'flex' ,backgroundColor : '#ffff' ,
+                         flexDirection:'column' , justifyContent:'center'  }}>
               <Box>
+                <Typography>
+                  Hello World
+                </Typography>
               </Box>
               <img height={400} width={500} src={doodle} alt='doodle'  />
             </Box>
