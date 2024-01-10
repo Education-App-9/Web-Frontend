@@ -39,9 +39,6 @@ function Copyright(props) {
 export default function SignUp() {
     const [appname,setAppname]= useState('Education App')
 
-    useEffect(()=>{
-        getCourses()
-    },[])
 
   const handleSubmit = (event) => {
     event.preventDefault();
