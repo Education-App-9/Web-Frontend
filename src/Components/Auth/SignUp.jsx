@@ -115,7 +115,6 @@ export default function SignUp() {
                 label="Name"
                 name="name"
                 autoComplete="name"
-                defaultValue="Small"
                 margin='normall'
                 size="small"
                 sx={{
@@ -130,7 +129,6 @@ export default function SignUp() {
                 label="Email Address"
                 name="email"
                 autoComplete="email"
-                defaultValue="Small"
                 margin='normal'
                 size="small"
                 sx={{
@@ -146,7 +144,6 @@ export default function SignUp() {
                 type={showPassword ? 'text' : 'password'}
                 id="password"
                 autoComplete="current-password"
-                defaultValue="Small"
                 margin='normal'
                 size="small"
                 InputProps={{
@@ -175,7 +172,6 @@ export default function SignUp() {
                 type={showCPassword ? 'text' : 'password'}
                 id="Cpassword"
                 autoComplete="current-password"
-                defaultValue="Small"
                 margin='normal'
                 size="small"
                 InputProps={{
@@ -211,7 +207,7 @@ export default function SignUp() {
 
                     } }}
               >
-                Register
+                Next
               </Button>
               <Grid container>
                 <Grid item>
