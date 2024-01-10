@@ -1,4 +1,4 @@
-import React , {useState} from 'react';
+import React , {useEffect, useState} from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -18,6 +18,7 @@ import IconButton from '@mui/material/IconButton';
 import InputAdornment from '@mui/material/InputAdornment';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
+import { getCourses } from '../../Api/Others/Courses/getCourses';
 
 
 function Copyright(props) {
@@ -37,6 +38,10 @@ function Copyright(props) {
 
 export default function SignUp() {
     const [appname,setAppname]= useState('Education App')
+
+    useEffect(()=>{
+        getCourses()
+    },[])
 
   const handleSubmit = (event) => {
     event.preventDefault();
