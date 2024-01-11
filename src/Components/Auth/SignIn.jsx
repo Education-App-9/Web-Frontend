@@ -2,6 +2,7 @@ import React , {useState} from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
+import { useMediaQuery } from '@mui/material';
 import TextField from '@mui/material/TextField';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
@@ -37,6 +38,10 @@ function Copyright(props) {
 
 
 export default function SignIn() {
+
+  const isSmallScreen = useMediaQuery('(max-width: 871px)');
+
+
   const handleSubmit = async(event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -65,24 +70,24 @@ export default function SignIn() {
       <Grid container component="main" sx={{ height: '100vh' , backgroundColor: '#f3f4f6' }}>
        
         
-        <Grid item xs={12} sm={8} md={6}  elevation={6} square>
+        <Grid item xs={12} sm={6} md={6} lg={6} elevation={6} square>
           <Box
             sx={{
               my: 8,
               mx: 3,
-              paddingX:'15%',
+              paddingX: { lg: '15%' , xs : '5%'},
               paddingY:'1%'
             }}
           >
             <Box sx={{display: 'flex',
               flexDirection: 'column',
               alignItems: 'start',}}>
-              <Typography sx={{fontWeight:'bolder' ,}}  variant="h5">
+              <Typography sx={{fontWeight:'bolder' ,mt:5}}  variant="h5">
                 Login
               </Typography>
             </Box>
             <Box component="form" noValidate onSubmit={handleSubmit} 
-              sx={{ mt: 1 ,
+              sx={{ mt: 4,
              display: 'flex',
              flexDirection: 'column',
              alignItems: 'center',}}>
@@ -157,8 +162,11 @@ export default function SignIn() {
         <Grid
           item
           xs={false}
-          sm={4}
+          sm={6}
           md={6}
+          lg={6}
+          sx={{ display: { xs: 'none', sm: 'block', md: 'block' } }}
+
         >
             <Box  sx={{
               mx: 4,
@@ -172,19 +180,29 @@ export default function SignIn() {
               borderRadius:5
             }}>
               <Box sx={{padding:1.5}}>
-                <Typography variant='h4' sx={{textAlign:'center' ,fontWeight:'bold'}} >
-                  Welcome Back
-                </Typography >
-                <Typography  sx={{textAlign:'center'}}>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                  Maxime mollitia, molestiae quas vel sint commodi repudiandae 
-                </Typography>
+              <Typography
+              variant="h4"
+              sx={{ textAlign: 'center', fontWeight: 'bold',
+               fontSize: isSmallScreen ? '2rem' : '2.5rem',
+               mt: isSmallScreen && '5%' 
+               }}
+            >
+              Welcome Back
+            </Typography>
+            <Typography sx={{ textAlign: 'center',
+             fontSize: isSmallScreen ? '1rem' : '1.2rem',
+             mt: isSmallScreen && '5%' 
+             }}>
+              Unlock a world of knowledge with our innovative education app - where learning meets technology for an
+              immersive and personalized educational experience.
+            </Typography>
               </Box>
               <Box sx={{padding:2 , display: 'flex',
               flexDirection: 'column',alignItems: 'center',}}>
                 <img 
-                  height={'1%'} 
-                    width={350} 
+                 height={isSmallScreen ? '50%' : '100%'}
+                  width={isSmallScreen ? 240 : 340}
+                  style={{marginTop:isSmallScreen? '13%':0}}
                     src={doodle} 
                     alt='doodle' 
                  />

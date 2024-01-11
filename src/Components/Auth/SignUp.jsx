@@ -242,8 +242,8 @@ export default function SignUp() {
                   Create Account And Start learning
                 </Typography >
                 <Typography  sx={{textAlign:'center'}}>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                  Maxime mollitia, molestiae quas vel sint commodi repudiandae 
+                 
+                  Unlock a world of knowledge with our innovative education app - where learning meets technology for an immersive and personalized educational experience.
                 </Typography>
               </Box>
               <Box sx={{padding:2 , display: 'flex',
