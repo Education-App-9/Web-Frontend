@@ -22,16 +22,7 @@ import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import { Login } from '../../Api/Auth/login';
 import doodleXS from '../../assets/Main/doddlexs.jpg'
 
-function Copyright(props) {
 
-    const [appname,setAppname]= useState('Education App')
-  return (
-    <Typography variant="body2" color="text.secondary" align="center" {...props}>
-      {`© ${appname}`},All rights Reserved
-      
-    </Typography>
-  );
-}
 
 // TODO remove, this demo shouldn't need to reset the theme.
 
@@ -41,6 +32,7 @@ export default function SignIn() {
 
   const isSmallScreen = useMediaQuery('(max-width: 871px)');
   const isXSmallScreen = useMediaQuery('(max-width: 599px)');
+   const [appname,setAppname]= useState('Education App')
 
   const handleSubmit = async(event) => {
     event.preventDefault();
@@ -167,7 +159,12 @@ export default function SignIn() {
                   </Link>
                 </Grid>
               </Grid>
-              <Copyright sx={{ mt: 5 }} />
+              <Box sx={{alignSelf:'start',mt:'18%'}}>
+              <Typography variant="body2" color="text.secondary"  >
+                {`© ${appname}`},All rights Reserved
+                
+              </Typography>
+              </Box>
             </Box>
           </Box>
         </Grid>

@@ -9,6 +9,7 @@ import Link from '@mui/material/Link';
 import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
+import { useNavigate } from 'react-router-dom';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
@@ -23,20 +24,11 @@ import { getCourses } from '../../Api/Others/Courses/getCourses';
 import { useMediaQuery } from '@mui/material';
 
 
-function Copyright(props) {
-
-    const [appname,setAppname]= useState('Education App')
-  return (
-    <Typography variant="body2" color="text.secondary" align="center" {...props}>
-      {`© ${appname}`},All rights Reserved
-      
-    </Typography>
-  );
-}
 
 export default function SignUp() {
     const [appname,setAppname]= useState('Education App')
 
+    const navigate = useNavigate()
     const isXSmallScreen = useMediaQuery('(max-width: 599px)');
     const isSmallScreen = useMediaQuery('(max-width: 871px)');
   const handleSubmit = (event) => {
@@ -46,6 +38,8 @@ export default function SignUp() {
       email: data.get('email'),
       password: data.get('password'),
     });
+
+    navigate('/description')
   };
 
   const theme = useTheme()
@@ -235,7 +229,12 @@ export default function SignUp() {
                   </Link>
                 </Grid>
               </Grid>
-              <Copyright sx={{ mt: 3 }} />
+              <Box sx={{alignSelf:'start',mt:'11%'}}>
+              <Typography variant="body2" color="text.secondary"  >
+                {`© ${appname}`},All rights Reserved
+                
+              </Typography>
+              </Box>
             </Box>
           </Box>
         </Grid>
