@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useDebugValue, useEffect, useState } from 'react';
 import LinearProgress from '@mui/material/LinearProgress';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import Box from '@mui/material/Box';
@@ -9,19 +9,47 @@ import { useNavigate } from 'react-router-dom';
 import doodle from '../../assets/Main/doddle.jpg';
 import doodleXS from '../../assets/Main/doddlexs.jpg';
 import { useTheme } from '@emotion/react';
+import { getCourses } from '../../Api/Others/Courses/getCourses';
 
 export default function Main1() {
   const [appname, setAppname] = useState('Education App');
   const [currentComponent, setCurrentComponent] = useState(1);
   const [selectedOption, setSelectedOption] = useState('');
+  const [courseOptions, setCourseOptions] = useState([]);
+
+
+      const getCoursesData = async () => {
+      try {
+        const res = await getCourses();
+        if(res != null)
+        {
+          const options = res.map(course => ({ label: course.name, value: course._id }));
+          setCourseOptions(options);
+      }
+      } catch (error) {
+        console.error('Error fetching courses:', error);
+      }
+  }
+
+  useEffect(()=>{
+    getCoursesData()
+    
+  },[])
 
   const navigate = useNavigate();
   const isXSmallScreen = useMediaQuery('(max-width: 599px)');
   const isSmallScreen = useMediaQuery('(max-width: 871px)');
 
   const components = [
-    { id: 1, image: doodle, content: 'Component 1', options: ['Yes', 'No'] },
-    { id: 2, image: doodle, content: 'Component 2', options: ['Option A', 'Option B'] },
+    { id: 1, image: doodle, 
+      content: 'What Best Describes You?', 
+      options: [
+        {label : 'Student College' ,value : 'Student College'}, 
+        {label : 'Student' ,value : 'Student'},        
+        {label : 'United Kingdom' ,value : 'United Kingdom'}, 
+      ]
+    },
+    { id: 2, image: doodle, content: 'What Subject Do you need to be help with', options: courseOptions },
     { id: 3, image: doodle, content: 'Component 3', options: ['Option X', 'Option Y'] },
     { id: 4, image: doodle, content: 'Component 4', options: ['Choice 1', 'Choice 2'] },
     { id: 5, image: doodle, content: 'Component 5', options: ['Agree', 'Disagree'] },
@@ -30,6 +58,7 @@ export default function Main1() {
   const theme = useTheme();
 
   const handleOptionSelect = (option) => {
+    console.log(option)
     setSelectedOption(option);
     if (currentComponent < components.length) {
       setCurrentComponent(currentComponent + 1);
@@ -106,9 +135,9 @@ export default function Main1() {
                 variant="contained"
                 color="primary"
                 style={{ marginRight: '10px', marginBottom: '10px' }}
-                onClick={() => handleOptionSelect(option)}
+                onClick={() => handleOptionSelect(option.value)}
               >
-                {option}
+                {option.label}
               </Button>
             ))}
           </Box>
