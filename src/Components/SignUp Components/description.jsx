@@ -49,10 +49,30 @@ export default function Main1() {
         {label : 'United Kingdom' ,value : 'United Kingdom'}, 
       ]
     },
-    { id: 2, image: doodle, content: 'What Subject Do you need to be help with', options: courseOptions },
-    { id: 3, image: doodle, content: 'Component 3', options: ['Option X', 'Option Y'] },
-    { id: 4, image: doodle, content: 'Component 4', options: ['Choice 1', 'Choice 2'] },
-    { id: 5, image: doodle, content: 'Component 5', options: ['Agree', 'Disagree'] },
+    { id: 2, image: doodle, 
+      content: 'What Subject Do you need to be help with', 
+      options: courseOptions },
+    { id: 3, image: doodle,  
+      content: 'What Best Describes You?', 
+      options: [
+        {label : 'Student College' ,value : 'Student College'}, 
+        {label : 'Student' ,value : 'Student'},        
+        {label : 'United Kingdom' ,value : 'United Kingdom'}, 
+      ]},
+    { id: 4, image: doodle, 
+      content: 'What Best Describes You?', 
+      options: [
+        {label : 'Student College' ,value : 'Student College'}, 
+        {label : 'Student' ,value : 'Student'},        
+        {label : 'United Kingdom' ,value : 'United Kingdom'}, 
+      ]},
+    { id: 5, image: doodle, 
+      content: 'What Best Describes You?', 
+      options: [
+        {label : 'Student College' ,value : 'Student College'}, 
+        {label : 'Student' ,value : 'Student'},        
+        {label : 'United Kingdom' ,value : 'United Kingdom'}, 
+      ] },
   ];
 
   const theme = useTheme();
