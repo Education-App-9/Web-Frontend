@@ -20,7 +20,7 @@ import InputAdornment from '@mui/material/InputAdornment';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import { Login } from '../../Api/Auth/login';
-
+import doodleXS from '../../assets/Main/doddlexs.jpg'
 
 function Copyright(props) {
 
@@ -40,7 +40,7 @@ function Copyright(props) {
 export default function SignIn() {
 
   const isSmallScreen = useMediaQuery('(max-width: 871px)');
-
+  const isXSmallScreen = useMediaQuery('(max-width: 599px)');
 
   const handleSubmit = async(event) => {
     event.preventDefault();
@@ -67,13 +67,25 @@ export default function SignIn() {
 
 
   return (
-      <Grid container component="main" sx={{ height: '100vh' , backgroundColor: '#f3f4f6' }}>
+      <Grid container component="main" sx={{  height: {lg:'100vh' ,xs: '0vh'} , 
+      backgroundColor: isXSmallScreen ? '#fff' : '#f3f4f6'
+       }}>
        
-        
+      {isXSmallScreen && (
+        <img
+          src={doodleXS}
+          alt="doodleXS"
+          style={{
+            width: '100%',
+            height: 170,
+            margin:0
+          }}
+        />
+      )}
         <Grid item xs={12} sm={6} md={6} lg={6} elevation={6} square>
           <Box
             sx={{
-              my: 8,
+              my: { lg: 8 , xs: 2},
               mx: 3,
               paddingX: { lg: '15%' , xs : '5%'},
               paddingY:'1%'
@@ -82,7 +94,7 @@ export default function SignIn() {
             <Box sx={{display: 'flex',
               flexDirection: 'column',
               alignItems: 'start',}}>
-              <Typography sx={{fontWeight:'bolder' ,mt:5}}  variant="h5">
+              <Typography sx={{fontWeight:'bolder' ,mt:{ lg: 5 , xs:0}}}  variant="h5">
                 Login
               </Typography>
             </Box>
