@@ -14,7 +14,9 @@ const lightPalette = {
   background: '#f8f8f8',
   inactive: '#48525b',
   body: '#6e6b7b',
-  buttonText:'#fff'
+  buttonText:'#fff',
+  navbar:'#fff',
+  landingBG:'#fff'
 
 };
 
@@ -26,7 +28,9 @@ const darkPalette = {
   background: '#0A1828',
   inactive: '#48525b',
   body: '#6e6b7b',
-  buttonText:'#fff'
+  buttonText:'#fff',
+  navbar:'#0f2742',
+  landingBG:'#0A1828'
 };
 
 // Create context for theme
@@ -48,7 +52,7 @@ export const ThemeProviderWrapper = ({ children }) => {
         secondary: { main: palette.secondary },
         tertiary: { main: palette.tertiary },
         text: { primary: palette.text , button : palette.buttonText },
-        background: { default: palette.background },
+        background: { default: palette.background , landingBG : palette.landingBG },
         action: {
           disabledBackground: palette.inactive,
           disabled: palette.inactive,
@@ -56,8 +60,8 @@ export const ThemeProviderWrapper = ({ children }) => {
         body: {
           primary : palette.body
         },
-        red: {
-          primary : palette.red
+        navbar: {
+          main : palette.navbar
         }
       },
     });
