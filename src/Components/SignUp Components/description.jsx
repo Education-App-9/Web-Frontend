@@ -10,6 +10,9 @@ import doodle from '../../assets/Main/doddle.jpg';
 import doodleXS from '../../assets/Main/doddlexs.jpg';
 import { useTheme } from '@emotion/react';
 import { getCourses } from '../../Api/Others/Courses/getCourses';
+import MenuBookIcon from '@mui/icons-material/MenuBook';
+import SchoolIcon from '@mui/icons-material/School';
+import LocalLibraryIcon from '@mui/icons-material/LocalLibrary';
 
 export default function Main1() {
   const [appname, setAppname] = useState('Education App');
@@ -44,35 +47,40 @@ export default function Main1() {
     { id: 1, image: doodle, 
       content: 'What Best Describes You?', 
       options: [
-        {label : 'Student College' ,value : 'Student College'}, 
-        {label : 'Student' ,value : 'Student'},        
-        {label : 'United Kingdom' ,value : 'United Kingdom'}, 
+        {label : 'Student College' ,value : 'Student College' , icon : <MenuBookIcon sx={{ color : '#c81e1e'}} />}, 
+        {label : 'Student' ,value : 'Student' , icon : <SchoolIcon sx={{color: '#5a5a5a'}}/> },        
+        {label : 'United Kingdom' ,value : 'United Kingdom' , icon : <LocalLibraryIcon sx={{color:'#d09a47'}} /> }, 
       ]
     },
     { id: 2, image: doodle, 
-      content: 'What Subject Do you need to be help with', 
-      options: courseOptions },
-    { id: 3, image: doodle,  
-      content: 'What is your degree level?', 
+      content: 'What is your field of Study?', 
       options: [
-        {label : 'College' ,value : 'College'}, 
-        {label : 'University' ,value : 'University'},        
-        {label : 'School' ,value : 'School'}, 
+        {label:'Faculty Of Administration Sciences',value:'Faculty Of Administration Sciences'},
+        {label:'College Sciences',value:'College Sciences'},
+        {label:'College of Engineering and Petroleum',value:'College of Engineering and Petroleum'}
+      ] },
+    { id: 3, image: doodle,  
+      content: 'What best decribes you?', 
+      options: [
+        {label : 'College Student' ,value : 'College Student'}, 
+        {label : 'University Student' ,value : 'University Student'},        
+        {label : 'Teacher' ,value : 'Teacher'}, 
+        {label : 'Instructor' ,value : 'Instructor'},        
+        {label : 'Other' ,value : 'Other'}, 
       ]},
     { id: 4, image: doodle, 
-      content: 'What Best Describes You?', 
+      content: 'What is your school type?', 
       options: [
-        {label : 'Student College' ,value : 'Student College'}, 
-        {label : 'Student' ,value : 'Student'},        
-        {label : 'United Kingdom' ,value : 'United Kingdom'}, 
+        {label : 'Tenth Grade' ,value : 'Tenth Grade'}, 
+        {label : 'Grade 11-Scientific' ,value : 'Grade 11-Scientific'},        
+        {label : 'Eleventh Grade-Literary' ,value : 'Eleventh Grade-Literary'}, 
+        {label : 'Grade 12-Scientific' ,value : 'Grade 12-Scientific'},        
+        {label : 'Twelfth Grade-Literary' ,value : 'Twelfth Grade-Literary'}, 
       ]},
     { id: 5, image: doodle, 
-      content: 'What Best Describes You?', 
-      options: [
-        {label : 'Student College' ,value : 'Student College'}, 
-        {label : 'Student' ,value : 'Student'},        
-        {label : 'United Kingdom' ,value : 'United Kingdom'}, 
-      ] },
+      content: 'What subjects do you need help with?', 
+      options: courseOptions
+    }
   ];
 
   const theme = useTheme();
@@ -147,16 +155,17 @@ export default function Main1() {
             <ArrowBackIosIcon sx={{ mb: 3 }} onClick={handleBack} />
             <LinearProgress variant="determinate" color="secondary" value={(currentComponent) * 20} />
           </Box>
-          <Typography>{components[currentComponent - 1].content}</Typography>
-          <Box sx={{ margin: '10px 0' }}>
+          <Typography sx={{textAlign:'center',width:'80%',marginTop:'7%',fontWeight:'bold'}}>{components[currentComponent - 1].content}</Typography>
+          <Box sx={{ margin: '7% 0' }}>
             {components[currentComponent - 1].options.map((option, index) => (
               <Button
                 key={index}
                 variant="contained"
-                color="primary"
-                style={{ marginRight: '10px', marginBottom: '10px' }}
+                color='background'
+                sx={{ display:'flex',marginRight: '5%', marginBottom: '3%' , border:0.5 , borderColor:'#f3f4f6' }}
                 onClick={() => handleOptionSelect(option.value)}
               >
+                {option.icon}
                 {option.label}
               </Button>
             ))}

@@ -14,6 +14,8 @@ const lightPalette = {
   background: '#f8f8f8',
   inactive: '#48525b',
   body: '#6e6b7b',
+  red: '#c81e1e',
+
 };
 
 const darkPalette = {
@@ -24,6 +26,7 @@ const darkPalette = {
   background: '#0A1828',
   inactive: '#48525b',
   body: '#6e6b7b',
+  red: '#c81e1e'
 };
 
 // Create context for theme
@@ -52,6 +55,9 @@ export const ThemeProviderWrapper = ({ children }) => {
         },
         body: {
           primary : palette.body
+        },
+        red: {
+          primary : palette.red
         }
       },
     });
