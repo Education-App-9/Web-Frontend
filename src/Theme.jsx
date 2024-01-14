@@ -14,7 +14,7 @@ const lightPalette = {
   background: '#f8f8f8',
   inactive: '#48525b',
   body: '#6e6b7b',
-  red: '#c81e1e',
+  buttonText:'#fff'
 
 };
 
@@ -26,7 +26,7 @@ const darkPalette = {
   background: '#0A1828',
   inactive: '#48525b',
   body: '#6e6b7b',
-  red: '#c81e1e'
+  buttonText:'#fff'
 };
 
 // Create context for theme
@@ -47,7 +47,7 @@ export const ThemeProviderWrapper = ({ children }) => {
         primary: { main: palette.primary },
         secondary: { main: palette.secondary },
         tertiary: { main: palette.tertiary },
-        text: { primary: palette.text },
+        text: { primary: palette.text , button : palette.buttonText },
         background: { default: palette.background },
         action: {
           disabledBackground: palette.inactive,

@@ -12,14 +12,21 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
-
-const pages = ['Products', 'Pricing', 'Blog'];
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+import { useTheme } from '@emotion/react';
+import Toggle from "react-toggle";
+import { faGlobe } from '@fortawesome/free-solid-svg-icons';
+import { ThemeProviderWrapper, useThemeContext } from '../Theme';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faToggleOff , faToggleOn } from '@fortawesome/free-solid-svg-icons';
+import { useNavigate } from 'react-router-dom';
+const pages = ['Explore', 'Latest Course', 'Tetimonials','About us'];
+const settings = ['english', 'urdu', 'arabic', 'french'];
 
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
-
+  const { isDarkMode, toggleTheme } = useThemeContext();
+const theme= useTheme()
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
@@ -31,13 +38,16 @@ function ResponsiveAppBar() {
     setAnchorElNav(null);
   };
 
+  const navigate = useNavigate()
+
+
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
 
   return (
-    <AppBar position="static">
-      <Container maxWidth="xl">
+    <AppBar position="static" sx={{backgroundColor: theme.palette.background.default , color:theme.palette.text.primary}}>
+      <Container maxWidth="xl" >
         <Toolbar disableGutters>
           <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
           <Typography
@@ -51,7 +61,7 @@ function ResponsiveAppBar() {
               fontFamily: 'monospace',
               fontWeight: 700,
               letterSpacing: '.3rem',
-              color: 'inherit',
+              color:theme.palette.text.primary,
               textDecoration: 'none',
             }}
           >
@@ -65,7 +75,7 @@ function ResponsiveAppBar() {
               aria-controls="menu-appbar"
               aria-haspopup="true"
               onClick={handleOpenNavMenu}
-              color="inherit"
+              color={theme.palette.text.primary}
             >
               <MenuIcon />
             </IconButton>
@@ -93,7 +103,11 @@ function ResponsiveAppBar() {
                 </MenuItem>
               ))}
             </Menu>
+
+           
+         
           </Box>
+         
           <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
           <Typography
             variant="h5"
@@ -107,7 +121,7 @@ function ResponsiveAppBar() {
               fontFamily: 'monospace',
               fontWeight: 700,
               letterSpacing: '.3rem',
-              color: 'inherit',
+              color:theme.palette.text.primary,
               textDecoration: 'none',
             }}
           >
@@ -118,42 +132,38 @@ function ResponsiveAppBar() {
               <Button
                 key={page}
                 onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'white', display: 'block' }}
+                sx={{ my: 2,color:theme.palette.text.primary, display: 'block' }}
               >
                 {page}
               </Button>
             ))}
+
+           
+          
           </Box>
 
-          <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
-              </IconButton>
-            </Tooltip>
-            <Menu
-              sx={{ mt: '45px' }}
-              id="menu-appbar"
-              anchorEl={anchorElUser}
-              anchorOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}
+                <Box sx={{marginTop:'1%',marginRight:'2%'}}>
+                <div  className={`toggle-button ${isDarkMode ? 'toggled' : ''}`} onClick={toggleTheme}>
+                <FontAwesomeIcon icon={isDarkMode ? faToggleOn : faToggleOff} style={{height:'25'}} />
+                
+              </div>
+              
+                </Box>
+                <Box sx={{marginTop:'1%',marginRight:'2%'}}>
+                <FontAwesomeIcon icon={faGlobe} style={{height:'22'}} />
+                </Box>
+         <Button sx={{
+            backgroundColor:theme.palette.secondary.main,color:theme.palette.text.button,
+            padding :'1% 4%',
+            border:1,borderRadius:2 
+            ,':hover' : { 
+                backgroundColor : theme.palette.text.button,
+                color : theme.palette.secondary.main
+            }}}
+            onClick={()=> navigate('/SignIn')}
             >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
-                </MenuItem>
-              ))}
-            </Menu>
-          </Box>
+         Login
+         </Button>
         </Toolbar>
       </Container>
     </AppBar>
