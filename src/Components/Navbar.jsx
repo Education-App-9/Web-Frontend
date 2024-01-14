@@ -46,7 +46,7 @@ const theme= useTheme()
   };
 
   return (
-    <AppBar position="static" sx={{backgroundColor: theme.palette.background.default , color:theme.palette.text.primary}}>
+    <AppBar position="static" sx={{backgroundColor: theme.palette.navbar.main , color:theme.palette.text.primary}}>
       <Container maxWidth="xl" >
         <Toolbar disableGutters>
           <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
@@ -155,7 +155,8 @@ const theme= useTheme()
          <Button sx={{
             backgroundColor:theme.palette.secondary.main,color:theme.palette.text.button,
             padding :'1% 4%',
-            border:1,borderRadius:2 
+            border:1,borderRadius:2,
+            borderColor: theme.palette.secondary.main
             ,':hover' : { 
                 backgroundColor : theme.palette.text.button,
                 color : theme.palette.secondary.main
