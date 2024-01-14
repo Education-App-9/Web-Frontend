@@ -1,4 +1,5 @@
-import Axios from '../../Connection/connection'
+import Axios from '../Connection/connection'
+
 
 export const getTopTeachers = async()=>{
    try {
