@@ -13,6 +13,14 @@ import { getCourses } from '../../Api/Others/Courses/getCourses';
 import MenuBookIcon from '@mui/icons-material/MenuBook';
 import SchoolIcon from '@mui/icons-material/School';
 import LocalLibraryIcon from '@mui/icons-material/LocalLibrary';
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import teacherIcon from '../../assets/Main/teacher.jpg'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { icon } from '@fortawesome/fontawesome-svg-core';
+import { faChain } from '@fortawesome/free-solid-svg-icons';
+import { faUserGraduate } from '@fortawesome/free-solid-svg-icons';
+import { faPersonChalkboard } from '@fortawesome/free-solid-svg-icons';
+import AutoAwesomeMosaicIcon from '@mui/icons-material/AutoAwesomeMosaic';
 
 export default function Main1() {
   const [appname, setAppname] = useState('Education App');
@@ -62,11 +70,12 @@ export default function Main1() {
     { id: 3, image: doodle,  
       content: 'What best decribes you?', 
       options: [
-        {label : 'College Student' ,value : 'College Student'}, 
-        {label : 'University Student' ,value : 'University Student'},        
-        {label : 'Teacher' ,value : 'Teacher'}, 
-        {label : 'Instructor' ,value : 'Instructor'},        
-        {label : 'Other' ,value : 'Other'}, 
+        {label : 'College Student' ,value : 'College Student',icon: <MenuBookIcon sx={{ color : '#c81e1e'}}/>}, 
+        {label : 'University Student' ,value : 'University Student',icon:<SchoolIcon sx={{color: '#5a5a5a'}}/>},        
+        {label : 'Teacher' ,value : 'Teacher',icon : <FontAwesomeIcon icon={faPersonChalkboard} style={{color: "#e5435b",}} />
+      }, 
+        {label : 'Instructor' ,value : 'Instructor' , icon :<FontAwesomeIcon icon={faUserGraduate} style={{color: "#e5435b",}} />},        
+        {label : 'Other' ,value : 'Other',icon:<AutoAwesomeMosaicIcon sx={{ color:'#d09a47'}} />}, 
       ]},
     { id: 4, image: doodle, 
       content: 'What is your school type?', 
@@ -151,23 +160,37 @@ export default function Main1() {
             paddingX: isSmallScreen ? '5%' : '15%',
           }}
         >
-          <Box sx={{ width: '80%', mt: '16%' }}>
+          <Box sx={{  mt: '16%' }}>
             <ArrowBackIosIcon sx={{ mb: 3 }} onClick={handleBack} />
             <LinearProgress variant="determinate" color="secondary" value={(currentComponent) * 20} />
           </Box>
-          <Typography sx={{textAlign:'center',width:'80%',marginTop:'7%',fontWeight:'bold'}}>{components[currentComponent - 1].content}</Typography>
+          <Typography sx={{textAlign:'center',marginTop:'7%',fontWeight:'bold'}}>{components[currentComponent - 1].content}</Typography>
           <Box sx={{ margin: '7% 0' }}>
             {components[currentComponent - 1].options.map((option, index) => (
               <Button
-                key={index}
-                variant="contained"
-                color='background'
-                sx={{ display:'flex',marginRight: '5%', marginBottom: '3%' , border:0.5 , borderColor:'#f3f4f6' }}
-                onClick={() => handleOptionSelect(option.value)}
-              >
-                {option.icon}
-                {option.label}
-              </Button>
+              key={index}
+              variant="contained"
+              color='background'
+              sx={{
+                width: '100%',
+                display: 'flex',
+                marginBottom: '4%',
+                flexDirection: 'row',
+                justifyContent: 'space-between', 
+                border: 0.5,
+                borderColor: '#f3f4f6'
+              }}
+              onClick={() => handleOptionSelect(option.value)}
+            >
+              <div style={{ display: 'flex', alignItems: 'center' }}>
+                {option.icon && (option.icon)}
+                <Typography sx={{ml:2,fontSize:'13px',fontWeight:500}}>
+                  {option.label}
+                </Typography>
+              </div>
+              <ArrowForwardIcon />
+            </Button>
+            
             ))}
           </Box>
         </Box>
