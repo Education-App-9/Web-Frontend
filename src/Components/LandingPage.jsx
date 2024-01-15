@@ -11,8 +11,9 @@ import { useTheme } from '@emotion/react'
 import AndroidIcon from '@mui/icons-material/Android';
 import AppleIcon from '@mui/icons-material/Apple';
 import Backimage from '../../src/assets/Main/Backimage.jpg'
-import frame1 from '../../src/assets/Main/Frame1.png'
-import frame2 from  '../../src/assets/Main/Frame2.png'
+import frame1 from '../assets/Main/Frame1.png'
+import frame2 from  '../assets/Main/Frame2.png'
+import frame3 from '../assets/Main/Frame3.jpg'
 import FeatureCard from './LandingPage_Component/FeatureCard'
 import SearchIcon from '@mui/icons-material/Search';
 import { getTopReviews } from '../Api/Landing Page/TopReviews';
@@ -142,14 +143,13 @@ const theme= useTheme()
         
          </Box>
          <Box sx = {{display:'flex', 
-         justifyContent:'center',marginTop:"8%"}}>
+         justifyContent:'center',py:"5%"}}>
          <img src={frame2} style={{height:400 }} />
          
          </Box>
           </Box>
           <Box sx={{
             backgroundColor:'#000',
-            marginY:'2%',
             pb:'2%'
            }}>
           
@@ -211,7 +211,7 @@ const theme= useTheme()
                 <Box>
                   <Typography variant='h6' 
                     sx={{
-                      color:theme.palette.text.primary , textAlign:'center',
+                      color:'#000' , textAlign:'center',
                       fontWeight:700,my:'1%'
                       }}>
                     We are trusted by thousands of people
@@ -253,6 +253,12 @@ const theme= useTheme()
     </Grid>
   </Grid>
 </Grid>
+
+    <Box sx = {{display:'flex', 
+         justifyContent:'center',py:"5%"}}>
+         <img src={frame3}  />
+         
+         </Box>
 
 
 
