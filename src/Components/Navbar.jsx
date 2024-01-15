@@ -46,7 +46,12 @@ const theme= useTheme()
   };
 
   return (
-    <AppBar position="static" sx={{backgroundColor: theme.palette.navbar.main , color:theme.palette.text.primary}}>
+    <AppBar position="static" 
+      sx={{backgroundColor: theme.palette.background.default ,
+       color:theme.palette.text.primary,
+       boxShadow:100
+
+       }}>
       <Container maxWidth="xl" >
         <Toolbar disableGutters>
           <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />

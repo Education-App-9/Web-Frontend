@@ -189,6 +189,28 @@ const theme= useTheme()
         ))}
         </Grid>
           </Box>
+          <Box sx = {{display:'flex', flexDirection:'column',
+              justifyContent:'center',marginTop:"8%"}}>
+                <Box>
+                  <Typography variant='h4' 
+                    sx={{
+                      color:theme.palette.secondary.main ,
+                      textAlign:'center'
+                      }}>
+                    TESTIMONIALS
+                  </Typography>
+                </Box>
+                <Box>
+                  <Typography variant='h6' 
+                    sx={{
+                      color:theme.palette.text.primary , textAlign:'center',
+                      fontWeight:700,mt:'1%'
+                      }}>
+                    We are trusted by thousands of people
+                  </Typography>
+                </Box>
+
+          </Box>
       </Fragment>
     </Suspense>
   )
