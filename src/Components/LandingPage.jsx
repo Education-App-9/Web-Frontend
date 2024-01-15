@@ -1,5 +1,5 @@
 import { Button, Box,Typography, Grid } from '@mui/material'
-import React, { Fragment, Suspense, lazy, useEffect } from 'react'
+import React, { Fragment, Suspense, lazy, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 const Navbar = lazy(()=> import('./Navbar'))
 import { Card, CardContent,CardActions } from '@mui/material';
@@ -15,10 +15,13 @@ import frame1 from '../../src/assets/Main/Frame1.png'
 import frame2 from  '../../src/assets/Main/Frame2.png'
 import FeatureCard from './LandingPage_Component/FeatureCard'
 import SearchIcon from '@mui/icons-material/Search';
+import { getTopReviews } from '../Api/Landing Page/TopReviews';
+const ReviewCard = lazy(()=> import('./LandingPage_Component/Testimonials'))
 
 export default function LandingPage() {
   const { isDarkMode, toggleTheme } = useThemeContext();
   const navigate = useNavigate()
+  const [reviews , setReviews] = useState([])
 
   const features = [
     {
@@ -52,9 +55,14 @@ export default function LandingPage() {
       description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.'
     },
   ];
+  const getReviews = async () => {
+    const res = await getTopReviews()
+    console.log(res)
+    setReviews(res)
+  }
 const theme= useTheme()
   useEffect(()=>{
-    const res = getStats()
+    getReviews()
     
   },[])
   return (
@@ -204,13 +212,34 @@ const theme= useTheme()
                   <Typography variant='h6' 
                     sx={{
                       color:theme.palette.text.primary , textAlign:'center',
-                      fontWeight:700,mt:'1%'
+                      fontWeight:700,my:'1%'
                       }}>
                     We are trusted by thousands of people
                   </Typography>
                 </Box>
+                
 
           </Box>
+          <Grid container component='main' sx={{my:'1%'}}>
+                      
+                {reviews.map((review , index) => (
+                    <Grid item xs={12} sm={6} md={4}
+                    key={index}
+                    sx={{display:'flex' ,justifyContent:'center'}}>
+                        <ReviewCard
+                          key={review._id}
+                          avatar={<img src={review.user.image} alt={review.user.name} />}
+                          name={review.user.name}
+                          title="Student Review"
+                          review={review.description}
+                          rating={review.rating}
+                          index= {index}
+                        />
+                    </Grid>
+                      
+                    ))}
+                      
+                </Grid>
       </Fragment>
     </Suspense>
   )
