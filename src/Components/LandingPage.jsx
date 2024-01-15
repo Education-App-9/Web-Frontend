@@ -220,26 +220,42 @@ const theme= useTheme()
                 
 
           </Box>
-          <Grid container component='main' sx={{my:'1%'}}>
-                      
-                {reviews.map((review , index) => (
-                    <Grid item xs={12} sm={6} md={4}
-                    key={index}
-                    sx={{display:'flex' ,justifyContent:'center'}}>
-                        <ReviewCard
-                          key={review._id}
-                          avatar={<img src={review.user.image} alt={review.user.name} />}
-                          name={review.user.name}
-                          title="Student Review"
-                          review={review.description}
-                          rating={review.rating}
-                          index= {index}
-                        />
-                    </Grid>
-                      
-                    ))}
-                      
-                </Grid>
+          <Grid sx={{ flexGrow: 1, justifyContent: 'center' }} container spacing={2}>
+  <Grid item>
+    <Grid
+      container
+      justifyContent="center"
+      sx={{
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        my: '2%',
+        mx: 'auto',
+      }}
+      spacing={0.5}
+    >
+      {reviews.map((review, index) => (
+        <Grid item xs={12} sm={6} md={4} key={index} 
+        sx={{
+          display: 'flex'
+        }}>
+          <ReviewCard
+            key={review._id}
+            avatar={<img src={review.user.image} alt={review.user.name} />}
+            name={review.user.name}
+            title="Student Review"
+            review={review.description}
+            rating={review.rating}
+            index={index}
+          />
+        </Grid>
+      ))}
+    </Grid>
+  </Grid>
+</Grid>
+
+
+
       </Fragment>
     </Suspense>
   )

@@ -23,23 +23,26 @@ const ReviewCard = ({ avatar, name, title, review, rating , index }) => {
 
   return (
     <Card sx={{
-        maxWidth: 300,
-        pt:20,
-        borderRadius: '18px',
-        display: 'flex',
-        flexDirection: 'column',
-        border: '1px solid', 
-        justifyContent:'center',
-        backgroundColor:'#000'
-
+      maxWidth: 300,
+      pt: index === 1 ? 20 : 15,
+      height: index === 1 ? 'auto' : 320,
+      borderRadius: '18px',
+      display: 'flex',
+      flexDirection: 'column',
+      border: '1px solid',
+      justifyContent: 'center',
+      backgroundColor: '#000',
+      my: index !== 1 && 'auto',
+      boxShadow: '0 10px 12px rgba(0, 0, 0, 0.2)',
+      mb:'5%'
     }}>
         <Box sx={{
             display: 'flex', 
             flexDirection: 'column', 
             justifyContent:'center',
-            mx:3,
+            mx:1,
             border:1,
-            my:3,
+            my:1,
             backgroundColor:'#fff',
             borderRadius:'15px'
 
@@ -60,7 +63,9 @@ const ReviewCard = ({ avatar, name, title, review, rating , index }) => {
 
             <Box sx={{ display: 'flex',flexDirection: 'column', justifyContent: 'center' }}>
                 <Box>
-                <Typography sx={{textAlign:'center'}} variant="body1">{name}</Typography>
+                  <Typography sx={{textAlign:'center'}} variant="body1">
+                   {name}
+                  </Typography>
                 </Box>
                 <Box>
                 <Typography sx={{textAlign:'center'}} variant="body2" color="text.secondary">
