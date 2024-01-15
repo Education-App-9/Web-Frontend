@@ -18,7 +18,7 @@ import FeatureCard from './LandingPage_Component/FeatureCard'
 import SearchIcon from '@mui/icons-material/Search';
 import { getTopReviews } from '../Api/Landing Page/TopReviews';
 const ReviewCard = lazy(()=> import('./LandingPage_Component/Testimonials'))
-
+const Footer = lazy(()=> import('./Footer'))
 export default function LandingPage() {
   const { isDarkMode, toggleTheme } = useThemeContext();
   const navigate = useNavigate()
@@ -253,15 +253,18 @@ const theme= useTheme()
     </Grid>
   </Grid>
 </Grid>
+        <Box>
+          <FeatureCard />
+        </Box>
 
     <Box sx = {{display:'flex', 
-         justifyContent:'center',py:"5%"}}>
+         justifyContent:'center'}}>
          <img src={frame3}  />
          
          </Box>
 
 
-
+        <Footer/>
       </Fragment>
     </Suspense>
   )

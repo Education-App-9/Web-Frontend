@@ -13,30 +13,30 @@ import OutlinedInput from '@mui/material/OutlinedInput';
 import InputLabel from '@mui/material/InputLabel';
 import InputAdornment from '@mui/material/InputAdornment';
 import EmailIcon from '@mui/icons-material/Email';
-import Aos from 'aos';
-import 'aos/dist/aos.css'
+
 
 export default function Footer() {
   const [email, setEmail] = React.useState('')
+  const theme = useTheme()
   React.useEffect(()=>{
-    Aos.init({duration:2500});
+    
   },[])
 
   return (
-    <ThemeProvider theme={newtheme}>
+  
     <Box
       component="footer"
       sx={{
-        backgroundColor: newtheme.palette.secondary.footer,
-        color: newtheme.palette.primary.background,
+        backgroundColor: theme.palette.primary.main,
+        color: theme.palette.text.button,
         p: 6,
         overflowX:'hidden'
       }}
     >
       <Container>
         <Grid container spacing={2}>
-          <Grid item xs={8} sm={4} data-aos="fade-right">
-            <Typography variant="h4" sx={{fontWeight:'bold',color: newtheme.palette.primary.background}}  gutterBottom>
+          <Grid item xs={8} sm={4} >
+            <Typography variant="h4" sx={{fontWeight:'bold',color: theme.palette.text.button}}  gutterBottom>
               Education
             </Typography>
             <Typography variant="body2">
@@ -44,57 +44,57 @@ export default function Footer() {
               users.
             </Typography>
           </Grid>
-          <Grid item xs={4} sm={2} data-aos="fade-up">
-            <Typography variant="h5"sx={{fontWeight:'bold',color: newtheme.palette.secondary.icon}} gutterBottom>
+          <Grid item xs={4} sm={2} >
+            <Typography variant="h5"sx={{fontWeight:'bold',color: theme.palette.text.button}} gutterBottom>
               Catogeries
             </Typography>
             
-            <Link href="#"  sx={{color: newtheme.palette.primary.background,textDecoration:'none'}}>
+            <Link href="#"  sx={{color: theme.palette.text.button,textDecoration:'none'}}>
               <Typography sx={{marginTop:'7%',marginBottom:'5%',marginLeft:'3%' ,'&:hover': {
-                color:newtheme.palette.secondary.background ,
+                color:theme.palette.text.button ,
               },}}>HomePage</Typography>
             </Link>
-            <Link href="#"  sx={{color: newtheme.palette.primary.background,textDecoration:'none' ,'&:hover': {
-                color:newtheme.palette.secondary.background ,
+            <Link href="#"  sx={{color: theme.palette.text.button,textDecoration:'none' ,'&:hover': {
+                color:theme.palette.text.button ,
               }}}>
               <Typography sx={{marginTop:'7%',marginBottom:'5%',marginLeft:'3%'}}>Courses</Typography>
             </Link>
-            <Link href="#"  sx={{color: newtheme.palette.primary.background,textDecoration:'none' ,'&:hover': {
-                color:newtheme.palette.secondary.background ,
+            <Link href="#"  sx={{color: theme.palette.text.button,textDecoration:'none' ,'&:hover': {
+                color:theme.palette.text.button ,
               }}}>
               <Typography sx={{marginTop:'7%',marginBottom:'5%',marginLeft:'3%'}}>Profile</Typography>
             </Link>
            
             
           </Grid>
-          <Grid item xs={4} sm={2} data-aos="fade-up">
-            <Typography variant="h5"sx={{fontWeight:'bold',color: newtheme.palette.secondary.icon}} gutterBottom>
+          <Grid item xs={4} sm={2} >
+            <Typography variant="h5"sx={{fontWeight:'bold',color: theme.palette.text.button}} gutterBottom>
               Support
             </Typography>
             
-            <Link href="#"  sx={{color: newtheme.palette.primary.background,textDecoration:'none' ,'&:hover': {
-                color:newtheme.palette.secondary.background ,
+            <Link href="#"  sx={{color: theme.palette.text.button,textDecoration:'none' ,'&:hover': {
+                color:theme.palette.text.button ,
               }}}>
               <Typography sx={{marginTop:'7%',marginBottom:'5%',marginLeft:'3%'}}>Profile</Typography>
             </Link>
-            <Link href="#"  sx={{color: newtheme.palette.primary.background,textDecoration:'none' ,'&:hover': {
-                color:newtheme.palette.secondary.background ,
+            <Link href="#"  sx={{color: theme.palette.text.button,textDecoration:'none' ,'&:hover': {
+                color:theme.palette.text.button ,
               }}}>
               <Typography sx={{marginLeft:'3%'}}>Contact</Typography>
             </Link>
             
           </Grid>
-          <Grid item xs={12} sm={4} data-aos="fade-left">
-            <Typography variant="h5"  sx={{fontWeight:'bold',color: newtheme.palette.secondary.icon}} gutterBottom>
+          <Grid item xs={12} sm={4} >
+            <Typography variant="h5"  sx={{fontWeight:'bold',color: theme.palette.text.button}} gutterBottom>
               Get in Touch
             </Typography>
             <FormControl sx={{ width: '100%', marginTop: 4 }}  >
-                        <InputLabel htmlFor="outlined-adornment-email" sx={{color : newtheme.palette.primary.background}}>Email</InputLabel>
+                        <InputLabel htmlFor="outlined-adornment-email" sx={{color : theme.palette.text.button}}>Email</InputLabel>
                         <OutlinedInput
                             id="outlined-adornment-email"
-                            sx={{color:newtheme.palette.primary.background,
+                            sx={{color:theme.palette.text.button,
                               '& fieldset': {
-                                borderColor: newtheme.palette.primary.background,
+                                borderColor: theme.palette.text.button,
                               },
                             }}
                             
@@ -103,7 +103,7 @@ export default function Footer() {
                                     <Button
                                         aria-label="toggle email visibility"
                                         edge="end"
-                                        sx={{color: newtheme.palette.primary.background}}
+                                        sx={{color: theme.palette.text.button}}
                                     >
                                         {<EmailIcon />}
                                     </Button>
@@ -115,23 +115,23 @@ export default function Footer() {
                         />
                     </FormControl>
                     <Box sx={{padding:'10%'}}>
-            <Link href="https://www.facebook.com/"  sx={{color: newtheme.palette.secondary.icon ,'&:hover': {
-                color:newtheme.palette.secondary.background ,
+            <Link href="https://www.facebook.com/"  sx={{color: theme.palette.text.button ,'&:hover': {
+                color:theme.palette.text.button ,
               }}}>
               <Facebook />
             </Link>
             <Link
               href="https://www.instagram.com/"
               
-              sx={{ pl: 1, pr: 1 ,marginLeft:'8%' ,color: newtheme.palette.secondary.icon ,'&:hover': {
-                color:newtheme.palette.secondary.background ,
+              sx={{ pl: 1, pr: 1 ,marginLeft:'8%' ,color: theme.palette.text.button ,'&:hover': {
+                color:theme.palette.text.button ,
               }}}
             >
               <Instagram />
             </Link>
             <Link href="https://www.twitter.com/" sx={{ pl: 1, pr: 1 ,marginLeft:'8%',
-            color:newtheme.palette.secondary.icon ,'&:hover': {
-              color:newtheme.palette.secondary.background ,
+            color:theme.palette.text.button ,'&:hover': {
+              color:theme.palette.text.button ,
             }}}>
               <Twitter />
             </Link>
@@ -141,7 +141,7 @@ export default function Footer() {
         <Box mt={5}>
           <Typography variant="body2"  align="center">
             {"Copyright @ "}
-            <Link  href="#" sx={{color:newtheme.palette.primary.background}}>
+            <Link  href="#" sx={{color:theme.palette.text.button}}>
               Education APP
             </Link>{" "}
             {new Date().getFullYear()}
@@ -150,6 +150,6 @@ export default function Footer() {
         </Box>
       </Container>
     </Box>
-    </ThemeProvider>
+    
   );
 }

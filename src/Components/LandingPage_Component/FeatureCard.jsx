@@ -1,23 +1,28 @@
 import React from 'react';
 import { Card, CardContent, Typography, CardActions, Button } from '@mui/material';
 import Icon from '@mui/material/Icon';
-const FeatureCard = ({ icon, title, description }) => {
+import {TextField} from '@mui/material';
+import { useTheme } from '@emotion/react';
+const FeatureCard = ({ }) => {
+  const theme = useTheme()
   return (
-    <Card sx={{ maxWidth: 345, m: 2 }}>
+    <Card sx={{ marginY:"5%",marginX:"20%",display:'flex',justifyContent:'center',border: 0.5,borderRadius:2,borderColor:theme.palette.text.button,boxShadow:'1px 1px 1px 1px grey' }}>
       <CardContent>
-        
-        <Icon>add_circle</Icon>
 
-        <Typography gutterBottom variant="h5" component="div">
-          {title}
+        <Typography gutterBottom variant="h3" sx={{fontWeight:"bold", color:theme.palette.secondary.main}}>
+          FOR ANY QUERIES, CONTACT US
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          {description}
+          Our team will get you soon.Please stay tuned.
         </Typography>
+          <TextField
+            label="Email"
+            InputProps={{ style: {margin: '0' } }}
+            
+          />
+         
       </CardContent>
-      <CardActions>
-        <Button size="small">Learn More</Button>
-      </CardActions>
+     
     </Card>
   );
 };
