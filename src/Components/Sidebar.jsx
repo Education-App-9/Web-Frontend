@@ -14,7 +14,7 @@ import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 
-const drawerWidth = 240;
+const drawerWidth = 200;
 
 export default function PermanentDrawerLeft() {
 
@@ -22,23 +22,28 @@ export default function PermanentDrawerLeft() {
         { 
             id : 1 ,
             url : "/",
-            icon : <MailIcon sx={{backgroundColor:'#000' , color:'#000'}} />
+            icon :  <MailIcon /> 
         },
         { 
             id : 2 ,
             url : "/",
-            icon : <MailIcon />
+            icon :  <MailIcon /> 
         },
         { 
             id : 3 ,
             url : "/",
-            icon : <MailIcon />
+            icon : <MailIcon /> 
         },
         { 
             id : 4 ,
             url : "/",
-            icon : <MailIcon />
-        }
+            icon :  <MailIcon />  
+        },
+        { 
+          id : 5 ,
+          url : "/",
+          icon :  <MailIcon />  
+      }
     ]
   return (
     <Box sx={{ display: 'flex' }}>
@@ -49,7 +54,7 @@ export default function PermanentDrawerLeft() {
           width: drawerWidth,
           flexShrink: 0,
           '& .MuiDrawer-paper': {
-            width: drawerWidth,
+            width: 160,
             boxSizing: 'border-box',
           },
         }}
@@ -57,20 +62,24 @@ export default function PermanentDrawerLeft() {
         anchor="left"
       >
         <Toolbar />
-        <Divider />
-        <List>
+        <List >
           {components.map((component) => (
-            <ListItem key={component.id} disablePadding>
-              <ListItemButton>
+            <ListItem key={component.id} 
+                sx={{
+                  margin:'1%', 
+                  }} >
+              <ListItemButton sx={{
+                alignItems:'center',
+                justifyContent:'center'
+              }}>
                 <ListItemIcon>
-                  {components.icon}
+                 {component.icon} 
                 </ListItemIcon>
               </ListItemButton>
-              <ListItemText primary={component.url} />
+            
             </ListItem>
           ))}
         </List>
-        <Divider />
       </Drawer>
     
     </Box>
