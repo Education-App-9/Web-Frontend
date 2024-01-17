@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import LinearProgress from '@mui/material/LinearProgress';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import Box from '@mui/material/Box';
+import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import { Button, useMediaQuery } from '@mui/material';
@@ -20,6 +21,10 @@ import { faUserGraduate } from '@fortawesome/free-solid-svg-icons';
 import { faPersonChalkboard } from '@fortawesome/free-solid-svg-icons';
 import AutoAwesomeMosaicIcon from '@mui/icons-material/AutoAwesomeMosaic';
 import { Checkbox, FormControl, InputLabel, Select, MenuItem } from '@mui/material';
+import { useLocation } from 'react-router-dom';
+import { Register } from '../../Api/Auth/register';
+import PriorityHighOutlinedIcon from '@mui/icons-material/PriorityHighOutlined';
+const [alert, setAlert] = useState({ show: false, message: '', success: false });
 
 export default function Main1() {
   const [appname, setAppname] = useState('Education App');
@@ -28,7 +33,14 @@ export default function Main1() {
   const [courseOptions, setCourseOptions] = useState([]);
   const [selectedOptions, setSelectedOptions] = useState([]);
   const [showSelect, setShowSelect] = useState(false);
+  const [description , setDescription ] = useState(null)
+  const [school , setSchool ] = useState(null)
+  const [fieldOfStudy , setfieldOfStudy ] = useState(null)
+  const [type , setType ] = useState(null)
 
+
+  const location = useLocation()
+  const user = location?.state?.user
   const getCoursesData = async () => {
     try {
       const res = await getCourses();
@@ -43,8 +55,8 @@ export default function Main1() {
 
   useEffect(() => {
     getCoursesData();
-    console.log(selectedOptions)
-  }, [selectedOptions]);
+    console.log(description , school ,fieldOfStudy )
+  }, []);
 
   const navigate = useNavigate();
   const isXSmallScreen = useMediaQuery('(max-width: 599px)');
@@ -105,7 +117,23 @@ export default function Main1() {
 
   const theme = useTheme();
 
-  const handleOptionSelect = (option) => {
+  const handleOptionSelect = async (option , index) => {
+    switch (index) {
+      case 1:
+        setDescription(option)
+        break;
+      case 2:
+        setSchool(option)
+        break;
+      case 3:
+        setfieldOfStudy(option)
+        break;
+      case 4:
+        setType(option)
+        break;
+      default:
+        break;
+    }
     if (currentComponent === 5 && option !== 'Next' && option !== 'skip') {
       const newSelectedOptions = [...selectedOptions];
       if (newSelectedOptions.includes(option)) {
@@ -116,7 +144,81 @@ export default function Main1() {
       setSelectedOptions(newSelectedOptions);
     }
     else if(option === 'skip' || option === 'Next'){
-        alert('Register here')
+        if(option == 'skip') {
+          const User = {
+            name: user.name,
+            email: user.email,
+            password:user.password,
+            confirmPassword:user.confirmPassword,
+            step:2,
+            description:description,
+            school : school ,
+            fieldOfStudy : fieldOfStudy,
+            type : type
+          }
+          const res = await Register(User)
+          if(res.success){
+            setAlert({
+              show: true,
+              message: response.message,
+              success: true,
+            });
+    
+            setTimeout(() => {
+              setAlert({ show: false, message: '', success: true });
+            }, 5000);
+            navigate('/SignIn')
+          }
+          else{
+            setAlert({
+              show: true,
+              message: response.message,
+              success: false,
+            });
+    
+            setTimeout(() => {
+              setAlert({ show: false, message: '', success: false });
+            }, 5000);
+          }
+        }
+        else{
+          const User = {
+            name: user.name,
+            email: user.email,
+            password:user.password,
+            confirmPassword:user.confirmPassword,
+            step:2,
+            description:description,
+            school : school ,
+            fieldOfStudy : fieldOfStudy,
+            type : type,
+            subjects : selectedOptions
+          }
+          const res = await Register(User)
+          if(res.success){
+            setAlert({
+              show: true,
+              message: response.message,
+              success: true,
+            });
+    
+            setTimeout(() => {
+              setAlert({ show: false, message: '', success: true });
+            }, 5000);
+            navigate('/SignIn')
+          }
+          else{
+            setAlert({
+              show: true,
+              message: response.message,
+              success: false,
+            });
+    
+            setTimeout(() => {
+              setAlert({ show: false, message: '', success: false });
+            }, 5000);
+          }
+        }
     }
     else if (currentComponent < components.length) {
       setCurrentComponent(currentComponent + 1);
@@ -237,7 +339,7 @@ export default function Main1() {
                     borderColor: theme.palette.secondary.main,
                     color:theme.palette.secondary.main
                   }}
-                  onClick={() => handleOptionSelect('skip')}
+                  onClick={() => handleOptionSelect('skip' , components[currentComponent - 1].id)}
                 >
                   <Typography sx={{ fontSize: '13px', fontWeight: 500 }}>
                     Skip & Register
@@ -258,7 +360,7 @@ export default function Main1() {
                     textAlign:'center',
 
                   }}
-                  onClick={() => handleOptionSelect('Next')}
+                  onClick={() => handleOptionSelect('Next' , components[currentComponent - 1].id)}
                 >
                   <Typography sx={{textAlign:'center', fontSize: '13px', fontWeight: 500 }}>
                     Register
@@ -281,7 +383,7 @@ export default function Main1() {
                     border: 0.5,
                     borderColor: '#f3f4f6',
                   }}
-                  onClick={() => handleOptionSelect(option.value)}
+                  onClick={() => handleOptionSelect(option.value,components[currentComponent - 1].id)}
                 >
                   <div style={{ display: 'flex', alignItems: 'center' }}>
                     {option.icon && option.icon}
@@ -356,7 +458,38 @@ export default function Main1() {
             />
           </Box>
         </Box>
+       
       </Grid>
+      <Box
+      sx={{
+        position: 'absolute',
+        bottom: '20px',
+        right: '20px',
+        zIndex: 999,
+        display: alert.show ? 'block' : 'none',
+      }}
+    >
+      <Paper
+        sx={{
+          backgroundColor: alert.success ? '#179c0e' : '#ff5050',
+          color: '#fff',
+          padding: '16px',
+          borderRadius: '8px',
+          boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.1)',
+        }}
+      >
+        <Box sx={{
+          display:'flex',
+          flexDirection: 'row',
+
+        }}>
+          <PriorityHighOutlinedIcon color='#fff' />
+          <Typography variant="body1"> {alert.message}
+          </Typography>
+        </Box>
+       
+      </Paper>
+    </Box>
     </Grid>
   );
 }
