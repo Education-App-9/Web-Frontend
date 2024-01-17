@@ -1,6 +1,6 @@
 import { Button } from '@mui/material'
-import React, { Fragment } from 'react'
-
+import React, { Fragment, Suspense, lazy, useEffect, useState } from 'react'
+const Sidebar = lazy(()=>import('../Sidebar'))
 export default function Home() {
   const handleLogout = () => {
     localStorage.removeItem("User")
@@ -9,6 +9,7 @@ export default function Home() {
   }
   return (
     <Fragment>
+    <Sidebar />
       <div>Home</div>
       <Button
         onClick={handleLogout}
