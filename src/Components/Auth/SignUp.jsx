@@ -57,23 +57,24 @@ export default function SignUp() {
       setEmailError(false)
       setIsDifferent(false)
       const User = 
-      {
-        name: data.get('name'),
-        email: data.get('email'),
-        password:data.get('password'),
-        confirmPassword:data.get('Cpassword'),
-        step:1
-      }
+              {
+                name: data.get('name'),
+                email: data.get('email'),
+                password:data.get('password'),
+                confirmPassword:data.get('Cpassword'),
+                step:1
+              }
       const res = await Register(User)
-      console.log(res.success)
       if(res.success){
-        alert("New User")
+        navigate('/description' ,   {
+          state: {user : User}
+         })
       }
       else{
         setEmailError(true)
         setEmailMessage(res.message)
       }
-      //navigate('/description')
+      
     }
   };
 
