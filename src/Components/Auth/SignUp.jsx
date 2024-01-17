@@ -22,24 +22,59 @@ import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import { getCourses } from '../../Api/Others/Courses/getCourses';
 import { useMediaQuery } from '@mui/material';
+import { Register } from '../../Api/Auth/register';
+import { faClose } from '@fortawesome/free-solid-svg-icons';
 
 
 
 export default function SignUp() {
     const [appname,setAppname]= useState('Education App')
+    const [isDifferent , setIsDifferent] = useState(false)
+    const [nameError , setNameError] = useState(false)
+    const [emailError , setEmailError] = useState(false)
+    const [emailMessage , setEmailMessage] = useState('')
 
     const navigate = useNavigate()
     const isXSmallScreen = useMediaQuery('(max-width: 599px)');
     const isSmallScreen = useMediaQuery('(max-width: 871px)');
-  const handleSubmit = (event) => {
+   
+  const handleSubmit = async (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
 
-    navigate('/description')
+    if(data.get("name") == ''){
+      setNameError(true)
+    }
+    else if(data.get("email") == ''){
+      setEmailError(true)
+      setEmailMessage('Please provide Valid Email')
+    }
+   else if(data.get("password") !== data.get("Cpassword")){
+     setIsDifferent(true)
+    }
+    else{
+      setNameError(false)
+      setEmailError(false)
+      setIsDifferent(false)
+      const User = 
+      {
+        name: data.get('name'),
+        email: data.get('email'),
+        password:data.get('password'),
+        confirmPassword:data.get('Cpassword'),
+        step:1
+      }
+      const res = await Register(User)
+      console.log(res.success)
+      if(res.success){
+        alert("New User")
+      }
+      else{
+        setEmailError(true)
+        setEmailMessage(res.message)
+      }
+      //navigate('/description')
+    }
   };
 
   const theme = useTheme()
@@ -63,7 +98,7 @@ export default function SignUp() {
   };
   return (
       <Grid container component="main" 
-        sx={{ height: {lg:'100vh' ,xs: '0vh'} , 
+        sx={{  
               backgroundColor:{ 
                 xs: '#fff' , sm: '#f3f4f6'
               } }}>
@@ -135,6 +170,11 @@ export default function SignUp() {
                             }}
                 autoFocus
               />
+              {nameError && (
+              <p style={{color:'red'}}>
+                Please provide Valid Name
+              </p>
+              )}
               <TextField
                 required
                 fullWidth
@@ -149,6 +189,11 @@ export default function SignUp() {
                 }}
                 autoFocus
               />
+              {emailError && (
+              <p style={{color:'red'}}>
+                {emailMessage}
+              </p>
+              )}
               <TextField
                 required
                 fullWidth
@@ -205,7 +250,11 @@ export default function SignUp() {
                   backgroundColor:'#fff'
                 }}
               />
-
+              {isDifferent && (
+              <p style={{color:'red'}}>
+                Password and Confirm Password Should be same
+              </p>
+              )}
               <Button
                 type="submit"
                 fullWidth
@@ -229,7 +278,7 @@ export default function SignUp() {
                   </Link>
                 </Grid>
               </Grid>
-              <Box sx={{alignSelf:'start',mt:'11%'}}>
+              <Box sx={{alignSelf:'start',mt:'5.7%'}}>
               <Typography variant="body2" color="text.secondary"  >
                 {`© ${appname}`},All rights Reserved
                 
@@ -256,11 +305,11 @@ export default function SignUp() {
               borderColor:'#fff',
               borderRadius:5
             }}>
-              <Box sx={{padding:1.5}}>
+              <Box sx={{padding:1}}>
               <Typography
               variant="h4"
               sx={{ textAlign: 'center', fontWeight: 'bold',
-               fontSize: isSmallScreen ? '1.5rem' : '2rem',
+               fontSize: isSmallScreen ? '1.25rem' : '1.5rem',
                mt: isSmallScreen && '5%' 
                }}
             >

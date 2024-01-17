@@ -203,9 +203,7 @@ export default function Main1() {
                         <Checkbox
                           checked={selectedOptions.includes(option.value)}
                           onChange={() => handleOptionSelect(option.value)}
-                          sx={{
-                            
-                          }}
+                      
                         />
                         <Typography 
                           sx={{ 
