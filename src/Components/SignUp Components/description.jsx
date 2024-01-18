@@ -24,7 +24,7 @@ import { Checkbox, FormControl, InputLabel, Select, MenuItem } from '@mui/materi
 import { useLocation } from 'react-router-dom';
 import { Register } from '../../Api/Auth/register';
 import PriorityHighOutlinedIcon from '@mui/icons-material/PriorityHighOutlined';
-const [alert, setAlert] = useState({ show: false, message: '', success: false });
+
 
 export default function Main1() {
   const [appname, setAppname] = useState('Education App');
@@ -37,6 +37,7 @@ export default function Main1() {
   const [school , setSchool ] = useState(null)
   const [fieldOfStudy , setfieldOfStudy ] = useState(null)
   const [type , setType ] = useState(null)
+  const [alert, setAlert] = useState({ show: false, message: '', success: false });
 
 
   const location = useLocation()
@@ -160,7 +161,7 @@ export default function Main1() {
           if(res.success){
             setAlert({
               show: true,
-              message: response.message,
+              message: res.message,
               success: true,
             });
     
@@ -172,7 +173,7 @@ export default function Main1() {
           else{
             setAlert({
               show: true,
-              message: response.message,
+              message: res.message,
               success: false,
             });
     
@@ -198,7 +199,7 @@ export default function Main1() {
           if(res.success){
             setAlert({
               show: true,
-              message: response.message,
+              message: res.message,
               success: true,
             });
     
@@ -210,7 +211,7 @@ export default function Main1() {
           else{
             setAlert({
               show: true,
-              message: response.message,
+              message: res.message,
               success: false,
             });
     

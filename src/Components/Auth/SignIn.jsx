@@ -41,7 +41,7 @@ export default function SignIn() {
       if (response.success) {
         // Redirect to "/"
         console.log(response.data.role)
-        localStorage.setItem("User" , response.data.role)
+        localStorage.setItem('User', JSON.stringify(response.data.role));
         localStorage.setItem("token" , response.data.token)
         window.location.href = '/';
       } else {
