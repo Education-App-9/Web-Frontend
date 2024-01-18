@@ -109,7 +109,9 @@ export default function PermanentDrawerLeft() {
           mr:'20%',
           mt:'35%'
         }}>
-          <ExitToAppIcon onClick={()=>handleLogout} />
+          <ExitToAppIcon sx={{
+            cursor:'pointer'
+          }} onClick={()=>handleLogout} />
         </Box>
       </Drawer>
     
