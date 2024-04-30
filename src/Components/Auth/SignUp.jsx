@@ -66,9 +66,20 @@ export default function SignUp() {
               }
       const res = await Register(User)
       if(res.success){
-        navigate('/description' ,   {
-          state: {user : User}
-         })
+        
+         const data1 = {
+          name: data.get('name'),
+          email: data.get('email'),
+          password:data.get('password'),
+          confirmPassword:data.get('Cpassword'),
+
+          step:2,
+          description:"description",
+          school : "school" ,
+          fieldOfStudy : "fieldOfStudy",
+          type : "type"
+        }
+        const res = await Register(data1)
       }
       else{
         setEmailError(true)

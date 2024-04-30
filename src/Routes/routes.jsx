@@ -10,9 +10,10 @@ export default function routes() {
           <Fragment>
             <Routes>
                 <Route path="/" element={<LandingPage />}  />
+                <Route path='/call' element={<VideoCall />} />
+
                 <Route path='/SignIn' element={<SignIn />}/>
                 <Route path='/SignUp' element={<SignUp />}/>
-                <Route path='/description' element={<Main1 />}/>
             </Routes>
          </Fragment>
       </Suspense>  
