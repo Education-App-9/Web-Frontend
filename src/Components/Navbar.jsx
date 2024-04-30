@@ -19,7 +19,7 @@ import { ThemeProviderWrapper, useThemeContext } from '../Theme';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faToggleOff , faToggleOn } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate } from 'react-router-dom';
-const pages = ['Explore', 'Latest Course', 'Tetimonials','About us'];
+const pages = ['Explore', 'About us'];
 const settings = ['english', 'urdu', 'arabic', 'french'];
 
 function ResponsiveAppBar() {
@@ -54,7 +54,7 @@ const theme= useTheme()
        }}>
       <Container maxWidth="xl" >
         <Toolbar disableGutters>
-          <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
+        
           <Typography
             variant="h6"
             noWrap
@@ -70,7 +70,7 @@ const theme= useTheme()
               textDecoration: 'none',
             }}
           >
-            LOGO
+            Supervision app
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -113,7 +113,7 @@ const theme= useTheme()
          
           </Box>
          
-          <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
+          
           <Typography
             variant="h5"
             noWrap
@@ -130,7 +130,7 @@ const theme= useTheme()
               textDecoration: 'none',
             }}
           >
-            LOGO
+            Supervision app
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
@@ -154,9 +154,7 @@ const theme= useTheme()
               </div>
               
                 </Box>
-                <Box sx={{marginTop:'1%',marginRight:'2%'}}>
-                <FontAwesomeIcon icon={faGlobe} style={{height:'22'}} />
-                </Box>
+               
          <Button sx={{
             backgroundColor:theme.palette.secondary.main,color:theme.palette.text.button,
             padding :'1% 4%',

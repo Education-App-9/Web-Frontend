@@ -14,9 +14,10 @@ import HomeIcon from '@mui/icons-material/Home';
 import ImportContactsIcon from '@mui/icons-material/ImportContacts';
 import PersonIcon from '@mui/icons-material/Person';
 import ChatIcon from '@mui/icons-material/Chat';
-import SettingsIcon from '@mui/icons-material/Settings';
+import CallIcon from '@mui/icons-material/Call';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 import { useTheme } from '@emotion/react';
+import { useNavigate } from 'react-router-dom';
 
 const drawerWidth = 200;
 
@@ -27,42 +28,35 @@ export default function PermanentDrawerLeft() {
     localStorage.removeItem("token")
     window.location.href = '/';
   }
-    const components = [
-        { 
-            id : 1 ,
-            url : "/",
-            icon :  <HomeIcon /> 
-        },
-        { 
-            id : 2 ,
-            url : "/",
-            icon :  <ImportContactsIcon /> 
-        },
-        { 
-            id : 3 ,
-            url : "/",
-            icon : <PersonIcon /> 
-        },
-        { 
-            id : 4 ,
-            url : "/",
-            icon :  <ChatIcon />  
-        },
-        { 
-          id : 5 ,
-          url : "/",
-          icon :  <SettingsIcon />  
-      }
-    ]
+
+  const navigate = useNavigate()
+  const components = [
+    {
+      id: 1,
+      url: "/",
+      icon: <HomeIcon />
+    },
+    {
+      id: 2,
+      url: "/call",
+      icon: <CallIcon />
+    },
+    {
+      id: 3,
+      url: "/chat",
+      icon: <ChatIcon />
+    },
+   
+  ]
   return (
-    <Box sx={{ display: 'flex' }}>
-      <CssBaseline />
-      
-     
+    <Box sx={{ display: 'flex' , backgroundColor : theme.palette.navbar.main }}>
+  
+
       <Drawer
         sx={{
           width: 160,
-          flexShrink: 0,
+          flexShrink: 0
+          , backgroundColor : theme.palette.navbar.main,
           '& .MuiDrawer-paper': {
             width: 160,
             boxSizing: 'border-box',
@@ -71,50 +65,46 @@ export default function PermanentDrawerLeft() {
         variant="permanent"
         anchor="left"
       >
-        <Typography 
-        variant='h6'
-          sx={{
-            color:theme.palette.secondary.main,
-            fontWeight : 'bold',
-            textAlign: 'center',
-            mt:3
-            
-            }}>
-        Logo Here
-      </Typography>
+       
         <Toolbar />
         <List >
           {components.map((component) => (
-            <ListItem key={component.id} 
-            sx={{
-            }}
-                >
-              <ListItemButton sx={{
-                justifyContent:'center',
-                marginBottom:'1%', 
-              }}>
+            <ListItem key={component.id}
+              sx={{
+              }}
+            >
+              <ListItemButton
+                onClick={
+                  () => navigate(component.url)
+                }
+                sx={{
+                  justifyContent: 'center',
+                  marginBottom: '1%',
+                }}>
                 <ListItemIcon>
-                 {component.icon} 
+                  {component.icon}
                 </ListItemIcon>
               </ListItemButton>
-            
+
             </ListItem>
           ))}
         </List>
 
         <Box sx={{
-          display:'flex' ,
-          flexDirection : 'row',
-          justifyContent : 'center',
-          mr:'20%',
-          mt:'35%'
+          display: 'flex',
+          flexDirection: 'row',
+          justifyContent: 'center',
+          mr: '20%',
+          mt: '35%',
+          color:'#000'
         }}>
           <ExitToAppIcon sx={{
-            cursor:'pointer'
-          }} onClick={()=>handleLogout} />
+            cursor: 'pointer',
+            color:'#000'
+          }} onClick={handleLogout} />
         </Box>
       </Drawer>
-    
+
     </Box>
   );
 }

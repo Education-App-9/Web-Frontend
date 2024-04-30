@@ -37,7 +37,7 @@ export default function Footer() {
         <Grid container spacing={2}>
           <Grid item xs={8} sm={4} >
             <Typography variant="h4" sx={{fontWeight:'bold',color: theme.palette.text.button}}  gutterBottom>
-              Education
+              Supervision App
             </Typography>
             <Typography variant="body2">
               We are dedicated to providing the best service to our
@@ -57,7 +57,7 @@ export default function Footer() {
             <Link href="#"  sx={{color: theme.palette.text.button,textDecoration:'none' ,'&:hover': {
                 color:theme.palette.text.button ,
               }}}>
-              <Typography sx={{marginTop:'7%',marginBottom:'5%',marginLeft:'3%'}}>Courses</Typography>
+              <Typography sx={{marginTop:'7%',marginBottom:'5%',marginLeft:'3%'}}>chat</Typography>
             </Link>
             <Link href="#"  sx={{color: theme.palette.text.button,textDecoration:'none' ,'&:hover': {
                 color:theme.palette.text.button ,
@@ -85,35 +85,6 @@ export default function Footer() {
             
           </Grid>
           <Grid item xs={12} sm={4} >
-            <Typography variant="h5"  sx={{fontWeight:'bold',color: theme.palette.text.button}} gutterBottom>
-              Get in Touch
-            </Typography>
-            <FormControl sx={{ width: '100%', marginTop: 4 }}  >
-                        <InputLabel htmlFor="outlined-adornment-email" sx={{color : theme.palette.text.button}}>Email</InputLabel>
-                        <OutlinedInput
-                            id="outlined-adornment-email"
-                            sx={{color:theme.palette.text.button,
-                              '& fieldset': {
-                                borderColor: theme.palette.text.button,
-                              },
-                            }}
-                            
-                            endAdornment={
-                                <InputAdornment position="end">
-                                    <Button
-                                        aria-label="toggle email visibility"
-                                        edge="end"
-                                        sx={{color: theme.palette.text.button}}
-                                    >
-                                        {<EmailIcon />}
-                                    </Button>
-                                </InputAdornment>
-                            }
-                            label="Email"
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
-                        />
-                    </FormControl>
                     <Box sx={{padding:'10%'}}>
             <Link href="https://www.facebook.com/"  sx={{color: theme.palette.text.button ,'&:hover': {
                 color:theme.palette.text.button ,
@@ -142,7 +113,7 @@ export default function Footer() {
           <Typography variant="body2"  align="center">
             {"Copyright @ "}
             <Link  href="#" sx={{color:theme.palette.text.button}}>
-              Education APP
+              Supervision APP
             </Link>{" "}
             {new Date().getFullYear()}
             {"."}

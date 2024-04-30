@@ -161,6 +161,8 @@ export default function PrimarySearchAppBar() {
     </Menu>
   );
 
+  
+
   return (
     <Box sx={{ flexGrow: 1  , backgroundColor : theme.palette.navbar.main}}>
       <AppBar position="static" sx={{
@@ -176,36 +178,16 @@ export default function PrimarySearchAppBar() {
           >
             <MenuIcon />
           </IconButton> */}
-          <Typography
-            variant="h6"
-            noWrap
-            component="div"
-            sx={{ ml : '2%', display: {  xs: 'none', sm: 'block' } ,
-                color:theme.palette.text.primary
-        }}
-          >
-            Courses
+         
+         <Typography sx={{color:theme.palette.text.primary}}>
+            SUPERVISION APP
           </Typography>
-          <Search>
-               
-
-                <StyledInputBase
-                    placeholder="Search for Teacher or Course…"
-                    inputProps={{ 'aria-label': 'search' }}
-                /> 
-                <IconButton color={theme.palette.text.primary}>
-                    <SearchIcon  />
-                </IconButton>
-   
-                
-           
-            </Search>
-            <Box sx={{  marginX: '2%' }}>
-            <FontAwesomeIcon icon={faGlobe} style={{ height: '22', color: theme.palette.text.primary }} />
-            </Box>
+         
+          
+        
           <Box sx={{ flexGrow: 1 }} />
           
-
+          
             <Box sx={{ marginTop: '1%', marginRight: '2%' }}>
             <div className={`toggle-button ${isDarkMode ? 'toggled' : ''}`} onClick={toggleTheme}>
                 <FontAwesomeIcon icon={isDarkMode ? faToggleOn : faToggleOff} style={{ height: '25', color: theme.palette.text.primary }} />
