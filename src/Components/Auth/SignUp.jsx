@@ -69,9 +69,44 @@ export default function SignUp() {
       }
       const res = await Register(User)
       if(res.success){
-        navigate('/description' ,   {
-          state: {user : User}
-         })
+  
+          const User1 = {
+            name: data.get('name'),
+            email: data.get('email'),
+            password: data.get('password'),
+            confirmPassword: data.get('Cpassword'),
+            step:2,
+            description:'description',
+            school : 'school' ,
+            fieldOfStudy : 'fieldOfStudy',
+            type : 'type',
+            subjects : []
+          }
+          const res = await Register(User1)
+          if(res.success){
+            setAlert({
+              show: true,
+              message: res.message,
+              success: true,
+            });
+    
+            setTimeout(() => {
+              setAlert({ show: false, message: '', success: true });
+            }, 5000);
+            navigate('/SignIn')
+          }
+          else{
+            setAlert({
+              show: true,
+              message: res.message,
+              success: false,
+            });
+    
+            setTimeout(() => {
+              setAlert({ show: false, message: '', success: false });
+            }, 5000);
+          }
+        
       }
       else {
         setEmailError(true)
