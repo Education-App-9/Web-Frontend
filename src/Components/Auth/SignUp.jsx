@@ -175,7 +175,7 @@ export default function SignUp() {
                 label="Name"
                 name="name"
                 autoComplete="name"
-                margin='normall'
+                margin='normal'
                 size="small"
                 sx={{
                   backgroundColor:'#fff',
