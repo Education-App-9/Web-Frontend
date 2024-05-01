@@ -43,7 +43,7 @@ export default function Home() {
   }, [])
   return (
     <Fragment>
-      <Suspense fallback={<div>loading...</div>}>
+      <Suspense fallback={<div>loading Supervision App...</div>}>
         <Box sx={{
           display: 'flex',
           backgroundColor: theme.palette.background.landingBG,

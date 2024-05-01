@@ -7,7 +7,7 @@ const SignUp = lazy(()=> import("../Components/Auth/SignUp"))
 const Main1 = lazy(()=>import("../Components/SignUp Components/description"))
 export default function routes() {
   return (
-    <Suspense fallback={<div>loading...</div>}>  
+    <Suspense fallback={<div>loading Supervision App...</div>}>  
           <Fragment>
             <Routes>
                 <Route path="/" element={<LandingPage />}  />

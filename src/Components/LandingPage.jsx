@@ -67,7 +67,7 @@ export default function LandingPage() {
 
   }, [])
   return (
-    <Suspense fallback={<div>loading...</div>}>
+    <Suspense fallback={<div>loading Supervision App...</div>}>
       <Fragment>
         <Navbar />
         <Box sx={{ 

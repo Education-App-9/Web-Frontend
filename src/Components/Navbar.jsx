@@ -17,7 +17,7 @@ import Toggle from "react-toggle";
 import { faGlobe } from '@fortawesome/free-solid-svg-icons';
 import { ThemeProviderWrapper, useThemeContext } from '../Theme';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faToggleOff , faToggleOn } from '@fortawesome/free-solid-svg-icons';
+import { faToggleOff, faToggleOn } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate } from 'react-router-dom';
 const pages = ['Explore', 'About us'];
 const settings = ['english', 'urdu', 'arabic', 'french'];
@@ -26,7 +26,7 @@ function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
   const { isDarkMode, toggleTheme } = useThemeContext();
-const theme= useTheme()
+  const theme = useTheme()
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
@@ -46,15 +46,16 @@ const theme= useTheme()
   };
 
   return (
-    <AppBar position="static" 
-      sx={{backgroundColor: theme.palette.background.default ,
-       color:theme.palette.text.primary,
-       boxShadow:100
+    <AppBar position="static"
+      sx={{
+        backgroundColor: theme.palette.background.default,
+        color: theme.palette.text.primary,
+        boxShadow: 100
 
-       }}>
+      }}>
       <Container maxWidth="xl" >
         <Toolbar disableGutters>
-        
+
           <Typography
             variant="h6"
             noWrap
@@ -66,7 +67,7 @@ const theme= useTheme()
               fontFamily: 'monospace',
               fontWeight: 700,
               letterSpacing: '.3rem',
-              color:theme.palette.text.primary,
+              color: theme.palette.text.primary,
               textDecoration: 'none',
             }}
           >
@@ -109,11 +110,11 @@ const theme= useTheme()
               ))}
             </Menu>
 
-           
-         
+
+
           </Box>
-         
-          
+
+
           <Typography
             variant="h5"
             noWrap
@@ -126,7 +127,7 @@ const theme= useTheme()
               fontFamily: 'monospace',
               fontWeight: 700,
               letterSpacing: '.3rem',
-              color:theme.palette.text.primary,
+              color: theme.palette.text.primary,
               textDecoration: 'none',
             }}
           >
@@ -137,37 +138,38 @@ const theme= useTheme()
               <Button
                 key={page}
                 onClick={handleCloseNavMenu}
-                sx={{ my: 2,color:theme.palette.text.primary, display: 'block' }}
+                sx={{ my: 2, color: theme.palette.text.primary, display: 'block' }}
               >
                 {page}
               </Button>
             ))}
 
-           
-          
+
+
           </Box>
 
-                <Box sx={{marginTop:'1%',marginRight:'2%'}}>
-                <div  className={`toggle-button ${isDarkMode ? 'toggled' : ''}`} onClick={toggleTheme}>
-                <FontAwesomeIcon icon={isDarkMode ? faToggleOn : faToggleOff} style={{height:'25'}} />
-                
-              </div>
-              
-                </Box>
-               
-         <Button sx={{
-            backgroundColor:theme.palette.secondary.main,color:theme.palette.text.button,
-            padding :'1% 4%',
-            border:1,borderRadius:2,
+          <Box sx={{ marginTop: '1%', marginRight: '2%' }}>
+            <div className={`toggle-button ${isDarkMode ? 'toggled' : ''}`} onClick={toggleTheme}>
+              <FontAwesomeIcon icon={isDarkMode ? faToggleOn : faToggleOff} style={{ height: '25' }} />
+
+            </div>
+
+          </Box>
+
+          <Button sx={{
+            backgroundColor: theme.palette.secondary.main, color: theme.palette.text.button,
+            padding: '1% 4%',
+            border: 1, borderRadius: 2,
             borderColor: theme.palette.secondary.main
-            ,':hover' : { 
-                backgroundColor : theme.palette.text.button,
-                color : theme.palette.secondary.main
-            }}}
-            onClick={()=> navigate('/SignIn')}
-            >
-         Login
-         </Button>
+            , ':hover': {
+              backgroundColor: theme.palette.text.button,
+              color: theme.palette.secondary.main
+            }
+          }}
+            onClick={() => navigate('/SignIn')}
+          >
+            Login
+          </Button>
         </Toolbar>
       </Container>
     </AppBar>

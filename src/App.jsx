@@ -34,7 +34,7 @@ const Router = lazy(()=>import("./Routes/routes"))
 const App = () => {
   if(!localStorage.getItem('User')){
     return (
-      <Suspense fallback={<div>loading...</div>}>  
+      <Suspense fallback={<div>loading Supervision App...</div>}>  
           <Fragment>
           <Router />
          </Fragment>
@@ -43,7 +43,7 @@ const App = () => {
   }
   else{
     return (
-      <Suspense fallback={<div>loading...</div>}>  
+      <Suspense fallback={<div>loading Supervision App...</div>}>  
           <Fragment>
             <RouterWithUsers />
          </Fragment>
